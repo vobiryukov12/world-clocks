@@ -19,7 +19,8 @@ export function FormClocks({ handleSubmit, handleChange, city,  offset}: IFormCl
           name="city"
           placeholder="Название"
           value={city} 
-          onChange={handleChange} 
+          onChange={handleChange}
+          required={true} 
         />
       </div>
 
@@ -29,10 +30,11 @@ export function FormClocks({ handleSubmit, handleChange, city,  offset}: IFormCl
           className="form__input" 
           id="offset"
           name="offset" 
-          type="text" 
+          type="number" 
           placeholder="Временная зона"
           value={offset}
           onChange={handleChange}
+          required={true}
         />
       </div>
       
