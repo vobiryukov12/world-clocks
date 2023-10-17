@@ -1,5 +1,6 @@
-import { useClocksItem } from '../../hooks/clocksItem';
+import { useEffect, useState } from 'react';
 import { IFormDate } from '../../models/models';
+import moment from 'moment';
 
 interface IClocksItemProps {
   item: IFormDate,
@@ -7,7 +8,29 @@ interface IClocksItemProps {
 }
 
 export function ClocksItem({ item, handleClick }: IClocksItemProps) {
-  const { hour, minute, second } = useClocksItem(item);
+  const [date, setDate] = useState(addTime());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(addTime());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  function addTime(): [number, number, number] {
+    const moments = moment().utcOffset(Number(item.offset));
+    const h = Number(moments.format('H'));
+    const m = Number(moments.format('mm'));
+    const s = Number(moments.format('ss'));
+
+    return [h, m, s];
+  }
+
+  const [h, m, s] = date;
+  const hour = h * 30;
+  const minute = m * 6;
+  const second = s * 6;
 
   return (
     <div className="clocks__item">
