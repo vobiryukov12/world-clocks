@@ -1,6 +1,13 @@
 import './formClocks.scss';
 
-export function FormClocks({ handleSubmit, handleChange, city,  offset}) {
+interface IFormClocksProps {
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void,
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  city: string,
+  offset: string
+}
+
+export function FormClocks({ handleSubmit, handleChange, city,  offset}: IFormClocksProps) {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__field">
