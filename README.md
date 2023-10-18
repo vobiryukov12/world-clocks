@@ -1,4 +1,4 @@
-# training-records
+# world-clocks
 ### Ссылка на прототип:
 
 https://vobiryukov12.github.io/world-clocks/
